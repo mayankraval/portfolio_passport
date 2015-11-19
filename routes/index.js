@@ -3,6 +3,7 @@ var passport = require('passport');
 var router = express.Router();
 
 var User = require('../models/user');
+var Business = require('../models/business');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -16,6 +17,13 @@ router.get('/', function (req, res, next) {
 router.get('/about', function(req,res,next) {
     var ranNum = Math.random();
     res.render('about',{title : 'About Me',
+        displayName: req.user ? req.user.displayName : ''});
+});
+
+//Get business page
+router.get('/business', function(req,res,next) {
+    var ranNum = Math.random();
+    res.render('business',{title : 'Business Contact',
         displayName: req.user ? req.user.displayName : ''});
 });
 

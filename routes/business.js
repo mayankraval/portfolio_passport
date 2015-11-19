@@ -1,8 +1,8 @@
+/* Business Contact */
 var express = require('express');
-var passport = require('passport');
 var router = express.Router();
 
-var User = require('../models/user');
+var User = require('../models/business');
 
 /* Utility functin to check if user is authenticatd */
 function requireAuth(req, res, next){
@@ -16,15 +16,15 @@ function requireAuth(req, res, next){
 
 /* Render Users main page. */
 router.get('/', requireAuth, function (req, res, next) {
-    User.find(function (err, users) {
+    User.find(function (err, contacts) {
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
-            res.render('users/index', {
-                title: 'Users',
-                users: users,
+            res.render('business/index', {
+                title: 'Business',
+                contacts: contacts,
                 displayName: req.user ? req.user.displayName : ''
             });
         }
@@ -33,21 +33,18 @@ router.get('/', requireAuth, function (req, res, next) {
 
 /* Render the Add Users Page */
 router.get('/add', requireAuth, function (req, res, next) {
-    res.render('users/add', {
-        title: 'Users',
+    res.render('business/add', {
+        title: 'Business Contact',
         displayName: req.user ? req.user.displayName : ''
     });
 });
 
 /* process the submission of a new user */
 router.post('/add', requireAuth, function (req, res, next) {
-    var user = new User(req.body);
-    var hashedPassword = user.generateHash(user.password);
-    User.create({
-        email: req.body.email,
-        password: hashedPassword,
-        displayName: req.body.displayName,
-        provider: 'local',
+    var business = new Business(req.body);
+    Business.create({
+        fieldName: req.body.fname,
+        fieldValue: req.body.fvalue,
         created: Date.now(),
         updated: Date.now()
     }, function (err, User) {
@@ -56,7 +53,7 @@ router.post('/add', requireAuth, function (req, res, next) {
             res.end(err);
         }
         else {
-            res.redirect('/users');
+            res.redirect('/business');
         }
     });
 });
@@ -73,8 +70,8 @@ router.get('/:id', requireAuth, function (req, res, next) {
         }
         else {
             //show the edit view
-            res.render('users/edit', {
-                title: 'Users',
+            res.render('business/edit', {
+                title: 'Business Contact',
                 user: user,
                 displayName: req.user ? req.user.displayName : ''
             });
@@ -85,19 +82,20 @@ router.get('/:id', requireAuth, function (req, res, next) {
 /* process the edit form submission */
 router.post('/:id', requireAuth, function (req, res, next) {
     var id = req.params.id;
-    var user = new User(req.body);
-    user.password = user.generateHash(user.password);
-    user._id = id;
-    user.updated = Date.now();
+    var field = new Field(req.body);
+    field.fname = req.body.fname;
+    field.fvalue = req.body.fvalue;
+    field._id = id;
+    field.updated = Date.now();
     
     // use mongoose to do the update
-    User.update({ _id: id }, user, function (err) {
+    User.update({ _id: id }, field, function (err) {
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
-            res.redirect('/users');
+            res.redirect('/business');
         }
     });
 });
@@ -111,11 +109,9 @@ router.get('/delete/:id', requireAuth, function (req, res, next) {
             res.end(err);
         }
         else {
-            res.redirect('/users');
+            res.redirect('/business');
         }
     });
 });
-
-
 
 module.exports = router;
