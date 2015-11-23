@@ -1,9 +1,0 @@
-<% include partials/header.ejs %>
-    <h1>Business Contacts</h1>
-    <!--ejs doen't support foreach loop -->
-    <ul>
-    <% for(var i=0; i<contacts.length;i++){ %>
-    <li><%= contacts[i] %></li>
-        <% } %>
-    </ul>
-<% include partials/footer.ejs %>

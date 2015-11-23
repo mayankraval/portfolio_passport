@@ -1,16 +1,16 @@
 <% include ../partials/header.ejs %>
-
+<body>
 <main class="container">
     <h1>Add a New Field</h1>
-       <div class="col-sm-4">
+    <div class="col-sm-4">
         <form method="post">
             <fieldset class="form-group">
-                <label for="fname">Field Name : *</label>
-                <input name="fname" type="text" class="form-control" required autofocus />
+                <label for="name">Field Name: *</label>
+                <input name="name" type="name" class="form-control" required autofocus />
             </fieldset>
             <fieldset class="form-group">
-                <label for="fvalue">Field Value: *</label>
-                <input name="fvalue" type="text" class="form-control" required />
+                <label for="number">Field Value: *</label>
+                <input name="number" type="text" class="form-control" required />
             </fieldset>
             <fieldset class="form-group text-right">
                 <input type="submit" class="btn btn-success" value="Submit"/>
@@ -19,5 +19,5 @@
     </div>
 
 </main>
-
+</body>
 <% include ../partials/footer.ejs %>

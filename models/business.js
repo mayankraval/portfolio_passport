@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // Define our user Schema
-var UserSchema = new Schema({
+var businessesSchema = new Schema({
 	fieldName: String,
 	fieldValue: String,
 	created: Number,
@@ -14,4 +14,4 @@ var UserSchema = new Schema({
 	collection: 'businessInfo'
 });
 
-module.exports = mongoose.model('Business', UserSchema);
+module.exports = mongoose.model('Business', businessesSchema);

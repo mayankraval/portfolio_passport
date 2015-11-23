@@ -18,7 +18,7 @@ var UserSchema = new Schema({
 	created: Number,
 	updated: Number
 }, {
-	collection: 'userInfo'
+	collection: 'contactInfo'
 });
 
 // Generate a Hash

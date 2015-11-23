@@ -21,9 +21,9 @@ router.get('/about', function(req,res,next) {
 });
 
 //Get business page
-router.get('/business', function(req,res,next) {
+router.get('/contact', function(req,res,next) {
     var ranNum = Math.random();
-    res.render('business',{title : 'Business Contact',
+    res.render('contact',{title : 'Business Contact',
         displayName: req.user ? req.user.displayName : ''});
 });
 
@@ -35,9 +35,9 @@ router.get('/portfolio', function(req,res,next) {
 });
 
 //Get contact page
-router.get('/contact', function(req,res,next) {
+router.get('/contactme', function(req,res,next) {
     var ranNum = Math.random();
-    res.render('contact',{title : 'Get in Touch!!!',
+    res.render('contactme',{title : 'Get in Touch!!!',
         displayName: req.user ? req.user.displayName : ''});
 });
 
