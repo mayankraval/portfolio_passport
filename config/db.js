@@ -1,5 +1,5 @@
 module.exports = {
 
-'url':'mongodb://localhost/userDB'
+'url':'mongodb://derby:derby@ds053874.mongolab.com:53874/userdb'
 
 };
