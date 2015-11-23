@@ -41,7 +41,7 @@ router.post('/add', function(req, res, next) {
     // try to save, and redirect to index if successful
     Contact.create( {
         name: req.body.name,
-        number: req.body.number
+        value: req.body.value
     }, function(err, Contact) {
         if (err) {
             console.log(err);
@@ -83,7 +83,7 @@ router.post('/:id', function(req, res, next) {
     var contact = new Contact( {
         _id: id,
         name: req.body.name,
-        number: req.body.number
+        value: req.body.value
     });
 
     // use mongoose to do update contact information

@@ -10,7 +10,7 @@
         </fieldset>
         <fieldset class="form-group">
             <label for="number" class="col-sm-2">Field Value: *</label>
-            <textarea name="number" required><%= contact.number %></textarea>
+            <textarea name="number" required><%= contact.value %></textarea>
         </fieldset>
         <button type="submit" class="col-sm-offset-2 btn btn-success">Submit</button>
         <a href="/contacts/delete/<%= contact._id %>" title="Delete" onclick="return confirm('Are you sure you want to delete this?');">

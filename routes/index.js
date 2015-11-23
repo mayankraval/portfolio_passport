@@ -3,7 +3,7 @@ var passport = require('passport');
 var router = express.Router();
 
 var User = require('../models/user');
-var Business = require('../models/business');
+var Business = require('../models/contact');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
